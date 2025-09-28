@@ -64,7 +64,7 @@
   <button id="infoBtn"
     onmouseover="showInfo()"
     onmouseout="hideInfoUnlessHeld()"
-    onclick="holdInfo()">
+    onclick="toggleHoldInfo()">
     Click me for info
   </button>
   
@@ -77,16 +77,22 @@
     let infoHeld = false;
 
     function showInfo() {
-      document.getElementById('infoBox').style.display = 'block';
+      if (!infoHeld) {
+        document.getElementById('infoBox').style.display = 'block';
+      }
     }
     function hideInfoUnlessHeld() {
       if (!infoHeld) {
         document.getElementById('infoBox').style.display = 'none';
       }
     }
-    function holdInfo() {
-      infoHeld = true;
-      showInfo();
+    function toggleHoldInfo() {
+      infoHeld = !infoHeld;
+      if (infoHeld) {
+        document.getElementById('infoBox').style.display = 'block';
+      } else {
+        document.getElementById('infoBox').style.display = 'none';
+      }
     }
     function hideInfo() {
       infoHeld = false;
