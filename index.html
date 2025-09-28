@@ -27,7 +27,7 @@
       margin-top: 40px;
     }
     .info-box {
-      display: none; /* Hidden by default */
+      display: none;
       background: rgba(0,0,0,0.7);
       padding: 20px;
       border-radius: 10px;
@@ -36,6 +36,8 @@
       color: #fff;
       font-size: 1.5em;
       box-shadow: 2px 2px 10px #222;
+      cursor: pointer; /* Indicates it's clickable */
+      transition: opacity 0.2s;
     }
     button {
       font-size: 1.2em;
@@ -61,13 +63,17 @@
   
   <button onclick="showInfo()">Click me for info</button>
   
-  <div class="info-box" id="infoBox">
-    Here is some information that appears when you click the button!
+  <div class="info-box" id="infoBox" onclick="hideInfo()">
+    Here is some information!<br>
+    <small>(Click this box to close)</small>
   </div>
   
   <script>
     function showInfo() {
       document.getElementById('infoBox').style.display = 'block';
+    }
+    function hideInfo() {
+      document.getElementById('infoBox').style.display = 'none';
     }
   </script>
 </body>
