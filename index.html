@@ -61,7 +61,12 @@
   <h1>Welcome to My Website!</h1>
   <p>MASAYA KANA NGAYON? 🚀</p>
   
-  <button onclick="showInfo()">Click me for info</button>
+  <button id="infoBtn"
+    onmouseover="showInfo()"
+    onmouseout="hideInfoUnlessHeld()"
+    onclick="holdInfo()">
+    Click me for info
+  </button>
   
   <div class="info-box" id="infoBox" onclick="hideInfo()">
     Here is some information!<br>
@@ -69,10 +74,22 @@
   </div>
   
   <script>
+    let infoHeld = false;
+
     function showInfo() {
       document.getElementById('infoBox').style.display = 'block';
     }
+    function hideInfoUnlessHeld() {
+      if (!infoHeld) {
+        document.getElementById('infoBox').style.display = 'none';
+      }
+    }
+    function holdInfo() {
+      infoHeld = true;
+      showInfo();
+    }
     function hideInfo() {
+      infoHeld = false;
       document.getElementById('infoBox').style.display = 'none';
     }
   </script>
